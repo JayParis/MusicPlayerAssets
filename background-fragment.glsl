@@ -2,6 +2,7 @@ precision highp float;
 
 uniform sampler2D uDiffuseMap;
 uniform float uTime;
+uniform vec2 uResolution;
 
 varying vec3 Normal;
 varying vec2 TexCoord;
@@ -9,7 +10,7 @@ varying vec3 Position;
 
 void main()
 {
-    vec2 uv = TexCoord;
+    vec2 uv = vec2(gl_FragCoord.x / uResolution.x, gl_FragCoord.y / uResolution.y);
     uv.y -= 1.5;
     uv.x += .2;
     //uv.x -= 0.5;
@@ -52,6 +53,7 @@ void main()
     col = mix(col, c2, smoothstep(step2, step3, d));
     col = mix(col, c3, smoothstep(step3, step4, d));
 
-    gl_FragColor =  vec4(col,1.0);
+    //gl_FragColor =  vec4(col,1.0);
+    gl_FragColor =  vec4(uv,0.0,1.0);
 }
 
