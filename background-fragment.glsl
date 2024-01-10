@@ -11,6 +11,7 @@ varying vec3 Position;
 
 void main()
 {
+    uTime *= 0.4;
     vec2 uv = vec2(gl_FragCoord.x / uResolution.x, gl_FragCoord.y / uResolution.y);
     uv.y -= 1.5;
     uv.x += .2;
