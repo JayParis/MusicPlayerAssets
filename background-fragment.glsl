@@ -3,6 +3,7 @@ precision highp float;
 uniform sampler2D uDiffuseMap;
 uniform float uTime;
 uniform vec2 uResolution;
+uniform vec2 uMousePos;
 
 varying vec3 Normal;
 varying vec2 TexCoord;
@@ -53,7 +54,10 @@ void main()
     col = mix(col, c2, smoothstep(step2, step3, d));
     col = mix(col, c3, smoothstep(step3, step4, d));
 
-    gl_FragColor =  vec4(col,1.0);
+    float distMod = distance(uMousePos.xy, gl_FragCoord.xy);
+    float colourMod = mix(0.5,0.3,clamp(distMod * 0.002,0.0,1.0));
+
+    gl_FragColor =  vec4(col * colourMod,1.0);
     //gl_FragColor =  vec4(vec2(gl_FragCoord.x / uResolution.x, gl_FragCoord.y / uResolution.y),0.0,1.0);
 }
 
