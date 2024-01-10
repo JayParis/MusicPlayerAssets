@@ -11,7 +11,7 @@ varying vec3 Position;
 
 void main()
 {
-    uTime *= 0.4;
+    float timeVal = uTime * 0.4;
     vec2 uv = vec2(gl_FragCoord.x / uResolution.x, gl_FragCoord.y / uResolution.y);
     uv.y -= 1.5;
     uv.x += .2;
@@ -20,8 +20,8 @@ void main()
     float offsetTime = .5;
     
     vec2 p = uv;
-    float t1 = uTime * 3. * offsetTime;
-    float t2 = uTime * 1. * offsetTime;
+    float t1 = timeVal * 3. * offsetTime;
+    float t2 = timeVal * 1. * offsetTime;
     
     p.y *= (p.x*p.y) * sin(p.y*p.x*2. + t1);
     
