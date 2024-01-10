@@ -54,6 +54,6 @@ void main()
     col = mix(col, c3, smoothstep(step3, step4, d));
 
     //gl_FragColor =  vec4(col,1.0);
-    gl_FragColor =  vec4(uv,0.0,1.0);
+    gl_FragColor =  vec4(vec2(gl_FragCoord.x / uResolution.x, gl_FragCoord.y / uResolution.y),0.0,1.0);
 }
 
