@@ -54,7 +54,7 @@ void main()
     col = mix(col, c2, smoothstep(step2, step3, d));
     col = mix(col, c3, smoothstep(step3, step4, d));
 
-    float distMod = distance(uMousePos.xy, gl_FragCoord.xy);
+    float distMod = distance(vec2(uMousePos.x, 1.0 - uMousePos.y), gl_FragCoord.xy);
     float colourMod = mix(0.5,0.3,clamp(distMod * 0.002,0.0,1.0));
 
     gl_FragColor =  vec4(col * colourMod,1.0);
